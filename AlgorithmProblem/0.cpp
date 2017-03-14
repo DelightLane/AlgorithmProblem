@@ -1,6 +1,6 @@
 #include "0.h"
-#include <cassert>
 
+// 0.1
 int Comparision::max(int value1, int value2)
 {
 	if (value1 > value2)
@@ -35,4 +35,12 @@ int Comparision::maximum(int* arr, int size)
 	}
 
 	return max;
+}
+
+// 0.2
+void Swap::swapInt(int* value1, int* value2)
+{
+	int temp = *value1;
+	*value1 = *value2;
+	*value2 = temp;
 }
