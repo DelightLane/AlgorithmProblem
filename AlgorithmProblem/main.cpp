@@ -6,7 +6,8 @@ int main(void)
 
 	int a[] = {0, 1, 2, 3, 4};
 
-	r.rotateLeft(a, 0, 3);
+	//r.rotateRightInterval(a, 5, 3);
+	r.rotateLeftInterval(a, 5, 3);
 
 	for (int i = 0 ; i < 5 ; ++i)
 	{

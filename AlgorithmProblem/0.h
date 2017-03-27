@@ -30,6 +30,7 @@ public:
 	}
 };
 
+// 0.3
 class Rotate
 {
 public:
@@ -43,6 +44,18 @@ public:
 	void rotateLeft(T arr[], int startIdx, int count)
 	{
 		this->rotate(arr, startIdx, count, eDirect::LEFT);
+	}
+
+	template<typename T>
+	void rotateRightInterval(T arr[], int arrCount, int interval)
+	{
+		this->rotateInterval(arr, arrCount, interval, eDirect::RIGHT);
+	}
+
+	template<typename T>
+	void rotateLeftInterval(T arr[], int arrCount, int interval)
+	{
+		this->rotateInterval(arr, arrCount, interval, eDirect::LEFT);
 	}
 
 private:
@@ -75,5 +88,33 @@ private:
 		}
 
 		arr[finalIdx] = temp;
+	}
+
+	template<typename T>
+	void rotateInterval(T arr[], int arrCount, int interval, eDirect direct)
+	{
+		if (interval > arrCount)
+		{
+			interval %= arrCount;
+		}
+
+		int startPos = direct == eDirect::RIGHT ? interval : arrCount - interval;
+		int splitPos = direct == eDirect::RIGHT ? arrCount - interval : interval;
+
+		T cached[10000];
+		for (int i = splitPos; i < arrCount; ++i)
+		{
+			cached[i - splitPos] = arr[i];
+		}
+
+		int idx = splitPos - 1;
+		for (int i = arrCount - 1; i >= startPos; --i)
+		{
+			arr[i] = arr[idx--];
+		}
+		for (int i = 0; i < startPos; ++i)
+		{
+			arr[i] = cached[i];
+		}
 	}
 };
