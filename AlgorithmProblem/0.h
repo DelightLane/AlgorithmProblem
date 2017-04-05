@@ -118,3 +118,22 @@ private:
 		}
 	}
 };
+
+// 0.4
+class BankWaitCounter
+{
+private:
+	static const int queueLength = 8;
+
+	int _queue[queueLength];
+
+	int _startPos, _curPos;
+
+public:
+	BankWaitCounter() : _startPos(0), _curPos(0)
+	{
+		std::fill_n(_queue, queueLength, 0);
+	}
+
+	void commend(int i);
+};

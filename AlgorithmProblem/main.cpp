@@ -2,17 +2,40 @@
 
 int main(void)
 {
-	Rotate r;
+	BankWaitCounter counter;
 
-	int a[] = {0, 1, 2, 3, 4};
+	counter.commend(0);
+	counter.commend(1);
+	counter.commend(2);
+	counter.commend(3);
+	counter.commend(4);
+	counter.commend(5);
+	counter.commend(6);
+	counter.commend(7);
+	counter.commend(8);
 
-	//r.rotateRightInterval(a, 5, 3);
-	r.rotateLeftInterval(a, 5, 3);
+	counter.commend(9);
 
-	for (int i = 0 ; i < 5 ; ++i)
-	{
-		std::cout << a[i] << std::endl;
-	}
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+
+	counter.commend(5);
+	counter.commend(6);
+	counter.commend(7);
+	counter.commend(8);
+
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+	counter.commend(0);
+
+	counter.commend(0);
 
 	return 0;
 }

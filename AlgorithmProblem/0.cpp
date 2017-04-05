@@ -44,3 +44,40 @@ void Swap::swapInt(int* value1, int* value2)
 	*value1 = *value2;
 	*value2 = temp;
 }
+
+// 0.4
+void BankWaitCounter::commend(int i)
+{
+	if (i == 0)
+	{
+		if (_startPos == _curPos)
+		{
+			if (_queue[_curPos] == 0)
+			{
+				std::cout << "queue empty!" << std::endl;
+
+				return;
+			}
+		}
+
+		std::cout << _queue[_startPos] << std::endl;
+
+		_queue[_startPos] = 0;
+		_startPos = (_startPos + 1) % queueLength;
+	}
+	else
+	{
+		if (_startPos == _curPos)
+		{
+			if (_queue[_curPos] != 0)
+			{
+				std::cout << "queue full!" << std::endl;
+
+				return;
+			}
+		}
+
+		_queue[_curPos] = i;
+		_curPos = (_curPos + 1) % queueLength;
+	}
+}
