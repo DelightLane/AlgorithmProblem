@@ -152,3 +152,67 @@ public:
 
 	void commend(int i);
 };
+
+// 0.5
+// 연결 리스트로 큐 구현하기
+template<typename T>
+class PointerQueue
+{
+public:
+	PointerQueue() : _head(nullptr), _tail(nullptr) {}
+
+	void enqueue(T* data)
+	{
+		Node<T*>* n = new Node<T*>(data);
+
+		if (isEmpty())
+		{
+			_head = n;
+			_tail = n;
+		}
+		else
+		{
+			_tail->next = n;
+			_tail = n;
+		}
+	}
+	T* dequeue()
+	{
+		if (isEmpty())
+		{
+			std::cout << "queue empty!" << std::endl;
+			return nullptr;
+		}
+
+		Node<T*>* temp = _head;
+		_head = temp->next;
+
+		if (_head == nullptr)
+		{
+			_tail = nullptr;
+		}
+
+		T* result = temp->context;
+		delete(temp);
+
+		return result;
+	}
+
+private:
+	bool isEmpty()
+	{
+		return _head == nullptr && _tail == nullptr;
+	}
+
+private:
+	template<typename T2>
+	struct Node
+	{
+		Node(T2 con) : next(nullptr), context(con) {}
+		Node* next;
+		T2 context;
+	};
+
+	Node<T*>* _head;
+	Node<T*>* _tail;
+};
