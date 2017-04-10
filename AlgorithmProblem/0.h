@@ -7,8 +7,11 @@
 class Comparision
 {
 public:
+	// 최대값과 최소값을 구하는 함수
 	int max(int value1, int value2);
 	int min(int value1, int value2);
+
+	// 배열의 최대값을 구하는 함수
 	int maximum(int* arr, int size);
 };
 
@@ -16,8 +19,10 @@ public:
 class Swap
 {
 public:
+	// 포인터를 이용해 값을 바꾸는 함수
 	void swapInt(int* value1, int* value2);
 
+	// 배열의 두 원소 바꾸기
 	template<typename T>
 	void swapArrElem(T value1[], T value2[], int index)
 	{
@@ -34,24 +39,28 @@ public:
 class Rotate
 {
 public:
+	// 배열의 일부를 오른쪽으로 1만큼 회전
 	template<typename T>
 	void rotateRight(T arr[], int startIdx, int count)
 	{
 		this->rotate(arr, startIdx, count, eDirect::RIGHT);
 	}
 
+	// 배열의 일부를 왼쪽으로 1만큼 회전
 	template<typename T>
 	void rotateLeft(T arr[], int startIdx, int count)
 	{
 		this->rotate(arr, startIdx, count, eDirect::LEFT);
 	}
 
+	// 인자를 받아서 그만큼 오른쪽으로 회전
 	template<typename T>
 	void rotateRightInterval(T arr[], int arrCount, int interval)
 	{
 		this->rotateInterval(arr, arrCount, interval, eDirect::RIGHT);
 	}
 
+	// 인자를 받아서 그만큼 왼쪽으로 회전
 	template<typename T>
 	void rotateLeftInterval(T arr[], int arrCount, int interval)
 	{
@@ -120,6 +129,12 @@ private:
 };
 
 // 0.4
+// 은행에서 대기번호를 관리하는 프로그램
+// 자연수 입력 : 큐에 저장
+// 0 입력 : 큐에서 가장 오래 기다린 대기번호 출력
+// 0보다 작은 수 입력 : 프로그램 종료
+// 0 입력시 큐가 비었으면 "queue empty!" 출력
+// 배열이 가득 차서 더 넣을 수가 없을 때는 "queue full!" 출력
 class BankWaitCounter
 {
 private:

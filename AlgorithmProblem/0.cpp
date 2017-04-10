@@ -1,4 +1,5 @@
 #include "0.h"
+#include <stdlib.h>
 
 // 0.1
 int Comparision::max(int value1, int value2)
@@ -67,17 +68,24 @@ void BankWaitCounter::commend(int i)
 	}
 	else
 	{
-		if (_startPos == _curPos)
+		if (i > 0)
 		{
-			if (_queue[_curPos] != 0)
+			if (_startPos == _curPos)
 			{
-				std::cout << "queue full!" << std::endl;
+				if (_queue[_curPos] != 0)
+				{
+					std::cout << "queue full!" << std::endl;
 
-				return;
+					return;
+				}
 			}
-		}
 
-		_queue[_curPos] = i;
-		_curPos = (_curPos + 1) % queueLength;
+			_queue[_curPos] = i;
+			_curPos = (_curPos + 1) % queueLength;
+		}
+		else
+		{
+			exit(0);
+		}
 	}
 }
