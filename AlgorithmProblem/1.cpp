@@ -54,15 +54,12 @@ void List::printRevert()
 
 void List::printRevertReqursively(std::shared_ptr<Node> n)
 {
-	if (n->next != nullptr)
-	{
-		printRevertReqursively(n->next);
-	}
-
-	n->print();
-
 	if (n == nullptr)
 	{
 		return;
 	}
+
+	printRevertReqursively(n->next);
+
+	n->print();
 }
