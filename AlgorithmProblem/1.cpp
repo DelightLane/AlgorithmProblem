@@ -63,3 +63,42 @@ void List::printRevertReqursively(std::shared_ptr<Node> n)
 
 	n->print();
 }
+
+
+// 1.3
+long long Binomial::calc(int total, int pick)
+{
+	if (pick == 0 || total == pick)
+	{
+		return 1;
+	}
+
+	long long value0;
+	long long value1;
+
+	auto key = std::pair<int, int>(total - 1, pick - 1);
+	auto it = _map.find(key);
+	if (it != _map.end())
+	{
+		value0 = it->second;
+	}
+	else
+	{
+		value0 = calc(total - 1, pick - 1);
+		_map.insert(std::map<std::pair<int, int>, int>::value_type(key, value0));
+	}
+
+	key = std::pair<int, int>(total - 1, pick);
+	it = _map.find(key);
+	if (it != _map.end())
+	{
+		value1 = it->second;
+	}
+	else
+	{
+		value1 = calc(total - 1, pick);
+		_map.insert(std::map<std::pair<int, int>, int>::value_type(key, value1));
+	}
+
+	return value0 + value1;
+}

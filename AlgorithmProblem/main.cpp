@@ -3,14 +3,9 @@
 
 int main(void)
 {
-	List l;
-	for (int i = 0; i < 10; ++i)
-	{
-		l.push(i);
-	}
-	
-	l.print();
-	l.printRevert();
+	Binomial b;
+
+	std::cout << b.calc(50, 20) << std::endl;
 	
 	return 0;
 }

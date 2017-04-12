@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <iostream>
+#include <map>
 
 // 1.1
 // 팩토리얼 계산하기
@@ -45,4 +46,14 @@ private:
 private:
 	std::shared_ptr<Node> _head;
 	std::shared_ptr<Node> _tail;
+};
+
+// 1.3 이항계수
+class Binomial
+{
+public:
+	long long calc(int total, int pick);
+
+private:
+	std::map<std::pair<int, int>, int> _map;
 };
