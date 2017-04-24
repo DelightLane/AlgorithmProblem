@@ -3,9 +3,9 @@
 
 int main(void)
 {
-	Binomial b;
-
-	std::cout << b.calc(50, 20) << std::endl;
+	Fibonacci f;
+	
+	std::cout << f.countUnsequenceZero(4);
 	
 	return 0;
 }

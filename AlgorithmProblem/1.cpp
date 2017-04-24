@@ -1,4 +1,6 @@
 #include "1.h"
+#include <functional>
+#include <sstream>
 
 // 1.1
 int Factorial::calc(int i)
@@ -101,4 +103,56 @@ long long Binomial::calc(int total, int pick)
 	}
 
 	return value0 + value1;
+}
+
+// 1.4
+int Fibonacci::countUnsequenceZero(int length)
+{
+	std::map<std::string, bool> counted;
+
+	std::function<int(std::string)> func = [&func, &counted](std::string str)
+	{
+		if (counted.find(str) != counted.end())
+		{
+			return 0;
+		}
+		else
+		{
+			if (str.find("00") != std::string::npos)
+			{
+				return 0;
+			}
+
+			std::cout << str << std::endl;
+			counted.insert(std::map<std::string, int>::value_type(str, true));
+		}
+
+		int result = 1;
+
+		int zeroIdx = str.find('0');
+
+		// 0이 없으면
+		if (zeroIdx == std::string::npos)
+		{
+			zeroIdx = -1;
+		}
+
+		for (int i = zeroIdx + 1; i < str.length(); ++i)
+		{
+			std::string copy(str);
+			copy[i] = '0';
+
+			result += func(copy);
+		}
+
+		return result;
+	};
+
+	std::stringstream startStr;
+	for (int i = 0; i < length; ++i)
+	{
+		startStr << '1';
+	}
+
+	return func(startStr.str());
 }
