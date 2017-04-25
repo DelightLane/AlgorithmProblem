@@ -156,3 +156,30 @@ int Fibonacci::countUnsequenceZero(int length)
 
 	return func(startStr.str());
 }
+
+int Fibonacci::countStairStepKind(int stairFloor)
+{
+	if (stairFloor < 0)
+	{
+		return 0;
+	}
+
+	if (stairFloor == 0)
+	{
+		return 1;
+	}
+
+	int result = 0;
+
+	if (--stairFloor >= 0)
+	{
+		result += countStairStepKind(stairFloor);
+	}
+
+	if (--stairFloor >= 0)
+	{
+		result += countStairStepKind(stairFloor);
+	}
+
+	return result;
+}

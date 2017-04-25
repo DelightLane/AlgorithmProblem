@@ -64,4 +64,7 @@ class Fibonacci
 public:
 	// 0과 1로 이루어진 문자열인데 0이 연속으로 나오지 않는, 특정 길이의 모든 문자열 갯수를 리턴하라.
 	int countUnsequenceZero(int length);
+
+	// n개의 계단을 한 번에 하나 또는 둘씩 올라가는데 n개의 계단을 올라가는 방법은?
+	int countStairStepKind(int stairFloor);
 };

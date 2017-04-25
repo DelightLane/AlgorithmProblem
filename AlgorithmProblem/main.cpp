@@ -5,7 +5,7 @@ int main(void)
 {
 	Fibonacci f;
 	
-	std::cout << f.countUnsequenceZero(4);
+	std::cout << f.countStairStepKind(20);
 	
 	return 0;
 }
