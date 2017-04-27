@@ -183,3 +183,30 @@ int Fibonacci::countStairStepKind(int stairFloor)
 
 	return result;
 }
+
+long long Fibonacci::get(int idx)
+{
+	if (idx <= 0)
+	{
+		return 0;
+	}
+
+	if (idx == 1 || idx == 2)
+	{
+		return 1;
+	}
+
+	if (_savedFibo.find(idx - 1) == _savedFibo.end())
+	{
+		_savedFibo.insert(std::map<int, long long>::value_type(idx - 1, get(idx - 1)));
+	}
+	if (_savedFibo.find(idx - 2) == _savedFibo.end())
+	{
+		_savedFibo.insert(std::map<int, long long>::value_type(idx - 2, get(idx - 2)));
+	}
+
+	long long lvalue = _savedFibo.at(idx - 1);
+	long long rvalue = _savedFibo.at(idx - 2);
+
+	return lvalue + rvalue;
+}

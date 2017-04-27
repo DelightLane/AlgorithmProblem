@@ -5,7 +5,8 @@ int main(void)
 {
 	Fibonacci f;
 	
-	std::cout << f.countStairStepKind(20);
+	std::cout << f.get(20) << std::endl;
+	std::cout << f.get(50);
 	
 	return 0;
 }
